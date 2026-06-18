@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../core/theme/app_colors.dart';
 import 'main_screen.dart';
@@ -27,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       filled: true,
       fillColor: Colors.transparent,
       isDense: true,
-      contentPadding: const EdgeInsets.symmetric(vertical: 10),
+      contentPadding: EdgeInsets.symmetric(vertical: 10.h),
       suffixIcon: suffix,
       border: const UnderlineInputBorder(
         borderSide: BorderSide(color: AppColors.border),
@@ -58,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               top: 0,
               left: 0,
               right: 0,
-              height: 320,
+              height: 320.h,
               child: Image.asset(
                 "assets/images/gradient.png",
                 fit: BoxFit.cover,
@@ -70,7 +71,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               bottom: 0,
               left: 0,
               right: 0,
-              height: 220,
+              height: 220.h,
               child: Image.asset(
                 "assets/images/gradient_bottom.png",
                 fit: BoxFit.cover,
@@ -84,106 +85,106 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Container(
                   color: Colors.transparent,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 40),
+                        SizedBox(height: 40.h),
 
                         // Логотип
                         Center(
                           child: SvgPicture.asset(
                             "assets/icons/carrot_orange.svg",
-                            height: 60,
+                            height: 60.h,
                           ),
                         ),
 
-                        const SizedBox(height: 48),
+                        SizedBox(height: 48.h),
 
                         // Заголовок
-                        const Text(
+                        Text(
                           "Sign Up",
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 26.sp,
                             fontWeight: FontWeight.w600,
                             color: AppColors.textPrimary,
                           ),
                         ),
 
-                        const SizedBox(height: 6),
+                        SizedBox(height: 6.h),
 
                         // Підзаголовок
-                        const Text(
+                        Text(
                           "Enter your credentials to continue",
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
 
-                        const SizedBox(height: 32),
+                        SizedBox(height: 32.h),
 
                         // Username
-                        const Text(
+                        Text(
                           "Username",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 13.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         TextField(
                           controller: _usernameController,
-                          style: const TextStyle(
-                            fontSize: 15,
+                          style: TextStyle(
+                            fontSize: 15.sp,
                             color: AppColors.textPrimary,
                           ),
                           decoration: _fieldDecoration(),
                         ),
 
-                        const SizedBox(height: 24),
+                        SizedBox(height: 24.h),
 
                         // Email
-                        const Text(
+                        Text(
                           "Email",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 13.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         TextField(
                           controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
-                          style: const TextStyle(
-                            fontSize: 15,
+                          style: TextStyle(
+                            fontSize: 15.sp,
                             color: AppColors.textPrimary,
                           ),
                           decoration: _fieldDecoration(
-                            suffix: const Icon(
+                            suffix: Icon(
                               Icons.check,
                               color: AppColors.primary,
-                              size: 20,
+                              size: 20.sp,
                             ),
                           ),
                         ),
 
-                        const SizedBox(height: 24),
+                        SizedBox(height: 24.h),
 
                         // Password
-                        const Text(
+                        Text(
                           "Password",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 13.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         TextField(
                           controller: _passwordController,
                           obscureText: _obscurePassword,
-                          style: const TextStyle(
-                            fontSize: 15,
+                          style: TextStyle(
+                            fontSize: 15.sp,
                             color: AppColors.textPrimary,
                           ),
                           decoration: _fieldDecoration(
@@ -197,24 +198,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 _obscurePassword
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_outlined,
-                                color:  AppColors.textSecondary,
-                                size: 20,
+                                color: AppColors.textSecondary,
+                                size: 20.sp,
                               ),
                             ),
                           ),
                         ),
 
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
 
                         // Terms
                         RichText(
-                          text: const TextSpan(
+                          text: TextSpan(
                             style: TextStyle(
-                              fontSize: 13,
+                              fontSize: 13.sp,
                               color: AppColors.textSecondary,
                               height: 1.5,
                             ),
-                            children: [
+                            children: const [
                               TextSpan(text: "By continuing you agree to our "),
                               TextSpan(
                                 text: "Terms of Service",
@@ -230,12 +231,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
 
-                        const SizedBox(height: 28),
+                        SizedBox(height: 28.h),
 
                         //  Кнопка
                         SizedBox(
                           width: double.infinity,
-                          height: 58,
+                          height: 58.h,
                           child: ElevatedButton(
                             onPressed: () {
                               Navigator.pushAndRemoveUntil(
@@ -243,48 +244,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 MaterialPageRoute(
                                   builder: (context) => const MainScreen(),
                                 ),
-                                    (route) => false,
+                                (route) => false,
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor:  AppColors.primary,
+                              backgroundColor: AppColors.primary,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18),
+                                borderRadius: BorderRadius.circular(18.r),
                               ),
                             ),
-                            child: const Text(
+                            child: Text(
                               "Sing Up",
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.background,
-                                letterSpacing: 0.3,
+                                letterSpacing: 0.3.sp,
                               ),
                             ),
                           ),
                         ),
 
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
 
                         // Already have an account?
                         Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
+                              Text(
                                 "Already have an account? ",
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 14.sp,
                                   color: AppColors.textPrimary,
                                 ),
                               ),
                               GestureDetector(
                                 onTap: () => Navigator.pop(context),
-                                child: const Text(
+                                child: Text(
                                   "Log in",
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.primary,
                                   ),
@@ -294,7 +295,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
 
-                        const SizedBox(height: 30),
+                        SizedBox(height: 30.h),
                       ],
                     ),
                   ),

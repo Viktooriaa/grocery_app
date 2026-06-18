@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../core/theme/app_colors.dart';
 import 'product_detail_screen.dart';
@@ -119,10 +120,10 @@ class _HomeScreenState extends State<HomeScreen> {
       fit: BoxFit.contain,
       errorBuilder: (context, error, stackTrace) => SizedBox(
         height: height,
-        child: const Icon(
+        child: Icon(
           Icons.image_not_supported_outlined,
           color: AppColors.border,
-          size: 40,
+          size: 40.sp,
         ),
       ),
     );
@@ -143,42 +144,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16.h),
 
                       // Локація
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: Column(
                           children: [
                             // Морквина зверху
                             Center(
                               child: SvgPicture.asset(
                                 'assets/icons/carrot_orange.svg',
-                                height: 26,
-                                errorBuilder: (c, e, s) => const Icon(
+                                height: 26.h,
+                                errorBuilder: (c, e, s) => Icon(
                                   Icons.local_grocery_store,
-                                  size: 30,
+                                  size: 30.sp,
                                   color: AppColors.primary,
                                 ),
                               ),
                             ),
 
-                            const SizedBox(height: 12),
+                            SizedBox(height: 12.h),
 
                             // Локація знизу з піном
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Icon(
                                   Icons.location_on,
-                                  size: 18,
+                                  size: 18.sp,
                                   color: AppColors.textPrimary,
                                 ),
-                                SizedBox(width: 4),
+                                SizedBox(width: 4.w),
                                 Text(
                                   'Dhaka, Banassre',
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.textPrimary,
                                   ),
@@ -189,22 +190,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16.h),
 
                       // Search
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: Container(
-                          height: 48,
+                          height: 48.h,
                           decoration: BoxDecoration(
                             color: const Color(0xFFF2F3F2),
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                           ),
-                          child: const TextField(
+                          child: TextField(
                             decoration: InputDecoration(
                               hintText: 'Search Store',
                               hintStyle: TextStyle(
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 color: AppColors.textSecondary,
                               ),
                               prefixIcon: Icon(
@@ -213,20 +214,20 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.symmetric(
-                                vertical: 14,
+                                vertical: 14.h,
                               ),
                             ),
                           ),
                         ),
                       ),
 
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16.h),
 
                       // Banner з PageView
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
                         child: SizedBox(
-                          height: 120,
+                          height: 120.h,
                           child: PageView(
                             onPageChanged: (i) =>
                                 setState(() => _currentBanner = i),
@@ -240,85 +241,85 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
 
                       // Dots
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: List.generate(
                           3,
                           (i) => AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
-                            margin: const EdgeInsets.symmetric(horizontal: 3),
-                            width: i == _currentBanner ? 20 : 6,
-                            height: 6,
+                            margin: EdgeInsets.symmetric(horizontal: 3.w),
+                            width: i == _currentBanner ? 20.w : 6.w,
+                            height: 6.h,
                             decoration: BoxDecoration(
                               color: i == _currentBanner
                                   ?  AppColors.primary
                                   :  Color(0xFFD9D9D9),
-                              borderRadius: BorderRadius.circular(3),
+                              borderRadius: BorderRadius.circular(3.r),
                             ),
                           ),
                         ),
                       ),
 
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
 
                       // Exclusive Offer
                       _sectionHeader('Exclusive Offer'),
-                      const SizedBox(height: 12),
+                      SizedBox(height: 12.h),
                       SizedBox(
-                        height: 220,
+                        height: 220.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
                           itemCount: _exclusiveOffers.length,
                           itemBuilder: (context, i) =>
                               _productCard(_exclusiveOffers[i]),
                         ),
                       ),
 
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
 
                       // Best Selling
                       _sectionHeader('Best Selling'),
-                      const SizedBox(height: 12),
+                      SizedBox(height: 12.h),
                       SizedBox(
-                        height: 220,
+                        height: 220.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
                           itemCount: _bestSelling.length,
                           itemBuilder: (context, i) =>
                               _productCard(_bestSelling[i]),
                         ),
                       ),
 
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
 
                       //  Groceries
                       _sectionHeader('Groceries'),
-                      const SizedBox(height: 12),
+                      SizedBox(height: 12.h),
                       SizedBox(
-                        height: 100,
+                        height: 100.h,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
                           itemCount: _groceryCategories.length,
                           itemBuilder: (context, i) =>
                               _groceryCategoryCard(_groceryCategories[i]),
                         ),
                       ),
 
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16.h),
 
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
                         gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                            SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
-                              mainAxisSpacing: 12,
-                              crossAxisSpacing: 12,
+                              mainAxisSpacing: 12.h,
+                              crossAxisSpacing: 12.w,
                               childAspectRatio: 0.75,
                             ),
                         itemCount: _groceries.length,
@@ -326,7 +327,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             _productCard(_groceries[i]),
                       ),
 
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                     ],
                   ),
                 ),
@@ -340,7 +341,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _bannerItem(String image) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(16.r),
       child: Container(
         width: double.infinity,
         color:  AppColors.primary,
@@ -355,23 +356,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _sectionHeader(String title) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 18,
+            style: TextStyle(
+              fontSize: 18.sp,
               fontWeight: FontWeight.w600,
               color: AppColors.textPrimary,
             ),
           ),
           GestureDetector(
             onTap: () {},
-            child: const Text(
+            child: Text(
               'See all',
-              style: TextStyle(fontSize: 14, color: AppColors.primary),
+              style: TextStyle(fontSize: 14.sp, color: AppColors.primary),
             ),
           ),
         ],
@@ -395,32 +396,32 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
       child: Container(
-        width: 160,
-        margin: const EdgeInsets.only(right: 12),
+        width: 160.w,
+        margin: EdgeInsets.only(right: 12.w),
         decoration: BoxDecoration(
           color: AppColors.background,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
           border: Border.all(color:  AppColors.border, width: 0.8),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: _imageAsset(item['image'], 100)),
-              const SizedBox(height: 8),
+              Center(child: _imageAsset(item['image'], 100.h)),
+              SizedBox(height: 8.h),
               Text(
                 item['name'],
-                style: const TextStyle(
-                  fontSize: 14,
+                style: TextStyle(
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: AppColors.textPrimary,
                 ),
               ),
-              const SizedBox(height: 2),
+              SizedBox(height: 2.h),
               Text(
                 item['desc'],
-                style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                style: TextStyle(fontSize: 12.sp, color: AppColors.textSecondary),
               ),
               const Spacer(),
               Row(
@@ -434,13 +435,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       widget.onAddToCart(item);
                     },
                     child: Container(
-                      width: 36,
-                      height: 36,
+                      width: 36.w,
+                      height: 36.h,
                       decoration: BoxDecoration(
                         color: AppColors.primary,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10.r),
                       ),
-                      child: const Icon(Icons.add, color: AppColors.background, size: 20),
+                      child: Icon(Icons.add, color: AppColors.background, size: 20.sp),
                     ),
                   ),
                 ],
@@ -454,26 +455,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _groceryCategoryCard(Map<String, dynamic> item) {
     return Container(
-      width: 180,
-      margin: const EdgeInsets.only(right: 12),
+      width: 180.w,
+      margin: EdgeInsets.only(right: 12.w),
       decoration: BoxDecoration(
         color: item['color'] as Color,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
       ),
       child: Row(
         children: [
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           SizedBox(
-            width: 70,
-            height: 70,
-            child: _imageAsset(item['image'], 70),
+            width: 70.w,
+            height: 70.h,
+            child: _imageAsset(item['image'], 70.h),
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: 8.w),
           Expanded(
             child: Text(
               item['name'],
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textPrimary,
               ),

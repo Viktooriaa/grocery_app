@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/theme/app_colors.dart';
 
@@ -47,13 +48,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       Stack(
                         children: [
                           Container(
-                            height: 280,
+                            height: 280.h,
                             width: double.infinity,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFF2F3F2),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF2F3F2),
                               borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(24),
-                                bottomRight: Radius.circular(24),
+                                bottomLeft: Radius.circular(24.r),
+                                bottomRight: Radius.circular(24.r),
                               ),
                             ),
                             child: PageView.builder(
@@ -61,14 +62,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               onPageChanged: (i) =>
                                   setState(() => _currentImage = i),
                               itemBuilder: (context, i) => Padding(
-                                padding: const EdgeInsets.all(24),
+                                padding: EdgeInsets.all(24.w),
                                 child: Image.asset(
                                   widget.image,
                                   fit: BoxFit.contain,
-                                  errorBuilder: (c, e, s) => const Icon(
+                                  errorBuilder: (c, e, s) => Icon(
                                     Icons.image_not_supported_outlined,
                                     color: AppColors.border,
-                                    size: 80,
+                                    size: 80.sp,
                                   ),
                                 ),
                               ),
@@ -77,7 +78,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
                           // Dots
                           Positioned(
-                            bottom: 16,
+                            bottom: 16.h,
                             left: 0,
                             right: 0,
                             child: Row(
@@ -86,15 +87,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 3,
                                     (i) => AnimatedContainer(
                                   duration: const Duration(milliseconds: 300),
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 3),
-                                  width: i == _currentImage ? 20 : 6,
-                                  height: 6,
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 3.w),
+                                  width: i == _currentImage ? 20.w : 6.w,
+                                  height: 6.h,
                                   decoration: BoxDecoration(
                                     color: i == _currentImage
                                         ?  AppColors.primary
                                         :  Color(0xFFD9D9D9),
-                                    borderRadius: BorderRadius.circular(3),
+                                    borderRadius: BorderRadius.circular(3.r),
                                   ),
                                 ),
                               ),
@@ -103,13 +104,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
                           // назад
                           Positioned(
-                            top: 12,
-                            left: 16,
+                            top: 12.h,
+                            left: 16.w,
                             child: GestureDetector(
                               onTap: () => Navigator.pop(context),
-                              child: const Icon(
+                              child: Icon(
                                 Icons.arrow_back_ios_new,
-                                size: 22,
+                                size: 22.sp,
                                 color: Colors.black,
                               ),
                             ),
@@ -117,13 +118,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
                           // Share
                           Positioned(
-                            top: 12,
-                            right: 16,
+                            top: 12.h,
+                            right: 16.w,
                             child: GestureDetector(
                               onTap: () {},
-                              child: const Icon(
+                              child: Icon(
                                 Icons.ios_share,
-                                size: 22,
+                                size: 22.sp,
                                 color: Colors.black,
                               ),
                             ),
@@ -131,11 +132,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ],
                       ),
 
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
 
                       // Назва + Favourite
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,17 +147,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 children: [
                                   Text(
                                     widget.name,
-                                    style: const TextStyle(
-                                      fontSize: 22,
+                                    style: TextStyle(
+                                      fontSize: 22.sp,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textPrimary,
                                     ),
                                   ),
-                                  const SizedBox(height: 4),
+                                  SizedBox(height: 4.h),
                                   Text(
                                     widget.desc,
-                                    style: const TextStyle(
-                                      fontSize: 14,
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
                                       color: AppColors.textSecondary,
                                     ),
                                   ),
@@ -173,18 +174,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 color: _isFavourite
                                     ? Colors.red
                                     :  AppColors.textSecondary,
-                                size: 26,
+                                size: 26.sp,
                               ),
                             ),
                           ],
                         ),
                       ),
 
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
 
                       // Кількість + ціна
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Row(
                           children: [
                             // Minus
@@ -195,16 +196,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 }
                               },
                               child: Container(
-                                width: 36,
-                                height: 36,
+                                width: 36.w,
+                                height: 36.h,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                       color:  AppColors.border),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.r),
                                 ),
-                                child: const Icon(
+                                child: Icon(
                                   Icons.remove,
-                                  size: 18,
+                                  size: 18.sp,
                                   color: AppColors.textPrimary,
                                 ),
                               ),
@@ -212,11 +213,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
                             Padding(
                               padding:
-                              const EdgeInsets.symmetric(horizontal: 16),
+                              EdgeInsets.symmetric(horizontal: 16.w),
                               child: Text(
                                 '$_quantity',
-                                style: const TextStyle(
-                                  fontSize: 18,
+                                style: TextStyle(
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.w600,
                                   color: AppColors.textPrimary,
                                 ),
@@ -227,16 +228,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             GestureDetector(
                               onTap: () => setState(() => _quantity++),
                               child: Container(
-                                width: 36,
-                                height: 36,
+                                width: 36.w,
+                                height: 36.h,
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                       color:  AppColors.primary),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.r),
                                 ),
-                                child: const Icon(
+                                child: Icon(
                                   Icons.add,
-                                  size: 18,
+                                  size: 18.sp,
                                   color: AppColors.primary,
                                 ),
                               ),
@@ -247,8 +248,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             // Ціна
                             Text(
                               '\$${(_basePrice * _quantity).toStringAsFixed(2)}',
-                              style: const TextStyle(
-                                fontSize: 24,
+                              style: TextStyle(
+                                fontSize: 24.sp,
                                 fontWeight: FontWeight.w700,
                                 color: AppColors.textPrimary,
                               ),
@@ -257,16 +258,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
 
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Divider(color: AppColors.border),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: const Divider(color: AppColors.border),
                       ),
 
                       // Product Detail
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Column(
                           children: [
                             GestureDetector(
@@ -276,10 +277,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Text(
+                                  Text(
                                     'Product Detail',
                                     style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 16.sp,
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.textPrimary,
                                     ),
@@ -294,11 +295,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               ),
                             ),
                             if (_detailExpanded) ...[
-                              const SizedBox(height: 10),
-                              const Text(
+                              SizedBox(height: 10.h),
+                              Text(
                                 'Apples Are Nutritious. Apples May Be Good For Weight Loss. Apples May Be Good For Your Heart. As Part Of A Healtful And Varied Diet.',
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 13.sp,
                                   color: AppColors.textSecondary,
                                   height: 1.6,
                                 ),
@@ -308,22 +309,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                       ),
 
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Divider(color: AppColors.border),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: const Divider(color: AppColors.border),
                       ),
 
                       // Nutritions
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 4),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.w, vertical: 4.h),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Nutritions',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.textPrimary,
                               ),
@@ -331,24 +332,24 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             Row(
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 4),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 8.w, vertical: 4.h),
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFF2F3F2),
-                                    borderRadius: BorderRadius.circular(6),
+                                    borderRadius: BorderRadius.circular(6.r),
                                   ),
-                                  child: const Text(
+                                  child: Text(
                                     '100gr',
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 12.sp,
                                       color: AppColors.textSecondary,
                                     ),
                                   ),
                                 ),
-                                const SizedBox(width: 8),
-                                const Icon(
+                                SizedBox(width: 8.w),
+                                Icon(
                                   Icons.arrow_forward_ios,
-                                  size: 16,
+                                  size: 16.sp,
                                   color: AppColors.textPrimary,
                                 ),
                               ],
@@ -357,22 +358,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                       ),
 
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Divider(color: AppColors.border),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: const Divider(color: AppColors.border),
                       ),
 
                       //  Review
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 4),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.w, vertical: 4.h),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Review',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.textPrimary,
                               ),
@@ -381,16 +382,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               children: [
                                 ...List.generate(
                                   5,
-                                      (i) => const Icon(
+                                      (i) => Icon(
                                     Icons.star,
-                                    size: 18,
+                                    size: 18.sp,
                                     color: Color(0xFFF3A505),
                                   ),
                                 ),
-                                const SizedBox(width: 8),
-                                const Icon(
+                                SizedBox(width: 8.w),
+                                Icon(
                                   Icons.arrow_forward_ios,
-                                  size: 16,
+                                  size: 16.sp,
                                   color: AppColors.textPrimary,
                                 ),
                               ],
@@ -399,12 +400,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                       ),
 
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Divider(color: AppColors.border),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: const Divider(color: AppColors.border),
                       ),
 
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                     ],
                   ),
                 ),
@@ -413,26 +414,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               // Add To Basket
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
                 child: SizedBox(
                   width: double.infinity,
-                  height: 58,
+                  height: 58.h,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor:  AppColors.primary,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(18.r),
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Add To Basket',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.background,
-                        letterSpacing: 0.3,
+                        letterSpacing: 0.3.sp,
                       ),
                     ),
                   ),

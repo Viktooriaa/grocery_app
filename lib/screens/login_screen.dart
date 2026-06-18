@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:grocery_app/screens/sign_up_screen.dart';
 
@@ -26,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
       filled: true,
       fillColor: Colors.transparent,
       isDense: true,
-      contentPadding: const EdgeInsets.symmetric(vertical: 10),
+      contentPadding: EdgeInsets.symmetric(vertical: 10.h),
       suffixIcon: suffix,
       border: const UnderlineInputBorder(
         borderSide: BorderSide(color: AppColors.border),
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(color: AppColors.background),
 
             Positioned(
-              top: 0, left: 0, right: 0, height: 320,
+              top: 0, left: 0, right: 0, height: 320.h,
               child: Image.asset(
                 "assets/images/gradient.png",
                 fit: BoxFit.cover,
@@ -60,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
 
             Positioned(
-              bottom: 0, left: 0, right: 0, height: 220,
+              bottom: 0, left: 0, right: 0, height: 220.h,
               child: Image.asset(
                 "assets/images/gradient_bottom.png",
                 fit: BoxFit.cover,
@@ -73,75 +74,75 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                   color: Colors.transparent,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 40),
+                        SizedBox(height: 40.h),
 
                         Center(
                           child: SvgPicture.asset(
                             "assets/icons/carrot_orange.svg",
-                            height: 60,
+                            height: 60.h,
                           ),
                         ),
 
-                        const SizedBox(height: 60),
+                        SizedBox(height: 60.h),
 
-                        const Text(
+                        Text(
                           "Loging",
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 26.sp,
                             fontWeight: FontWeight.w600,
                             color: AppColors.textPrimary,
                           ),
                         ),
 
-                        const SizedBox(height: 6),
+                        SizedBox(height: 6.h),
 
-                        const Text(
+                        Text(
                           "Enter your emails and password",
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
 
-                        const SizedBox(height: 36),
+                        SizedBox(height: 36.h),
 
-                        const Text(
+                        Text(
                           "Email",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 13.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         TextField(
                           controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
-                          style: const TextStyle(
-                            fontSize: 15,
+                          style: TextStyle(
+                            fontSize: 15.sp,
                             color: AppColors.textPrimary,
                           ),
                           decoration: _fieldDecoration(),
                         ),
 
-                        const SizedBox(height: 28),
+                        SizedBox(height: 28.h),
 
-                        const Text(
+                        Text(
                           "Password",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 13.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         TextField(
                           controller: _passwordController,
                           obscureText: _obscurePassword,
-                          style: const TextStyle(
-                            fontSize: 15,
+                          style: TextStyle(
+                            fontSize: 15.sp,
                             color: AppColors.textPrimary,
                           ),
                           decoration: _fieldDecoration(
@@ -155,34 +156,34 @@ class _LoginScreenState extends State<LoginScreen> {
                                 _obscurePassword
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_outlined,
-                                color:  AppColors.textSecondary,
-                                size: 20,
+                                color: AppColors.textSecondary,
+                                size: 20.sp,
                               ),
                             ),
                           ),
                         ),
 
-                        const SizedBox(height: 16),
+                        SizedBox(height: 16.h),
 
                         Align(
                           alignment: Alignment.centerRight,
                           child: GestureDetector(
                             onTap: () {},
-                            child: const Text(
+                            child: Text(
                               "Forgot Password?",
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 color: AppColors.textPrimary,
                               ),
                             ),
                           ),
                         ),
 
-                        const SizedBox(height: 32),
+                        SizedBox(height: 32.h),
 
                         SizedBox(
                           width: double.infinity,
-                          height: 58,
+                          height: 58.h,
                           child: ElevatedButton(
                             onPressed: () {
                               Navigator.pushAndRemoveUntil(
@@ -190,38 +191,38 @@ class _LoginScreenState extends State<LoginScreen> {
                                 MaterialPageRoute(
                                   builder: (context) => const MainScreen(),
                                 ),
-                                    (route) => false,
+                                (route) => false,
                               );
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor:  AppColors.primary,
+                              backgroundColor: AppColors.primary,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18),
+                                borderRadius: BorderRadius.circular(18.r),
                               ),
                             ),
-                            child: const Text(
+                            child: Text(
                               "Log In",
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.background,
-                                letterSpacing: 0.3,
+                                letterSpacing: 0.3.sp,
                               ),
                             ),
                           ),
                         ),
 
-                        const SizedBox(height: 24),
+                        SizedBox(height: 24.h),
 
                         Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
+                              Text(
                                 "Don't have an account? ",
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 14.sp,
                                   color: AppColors.textPrimary,
                                 ),
                               ),
@@ -231,14 +232,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                      const SignUpScreen(),
+                                          const SignUpScreen(),
                                     ),
                                   );
                                 },
-                                child: const Text(
+                                child: Text(
                                   "Sing up",
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.primary,
                                   ),
@@ -248,7 +249,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
 
-                        const SizedBox(height: 30),
+                        SizedBox(height: 30.h),
                       ],
                     ),
                   ),

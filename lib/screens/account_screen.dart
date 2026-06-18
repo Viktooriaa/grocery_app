@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../core/theme/app_colors.dart';
 import 'login_screen.dart';
@@ -18,15 +19,15 @@ class AccountScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
 
                 // Профіль
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: Row(
                     children: [
                       CircleAvatar(
-                        radius: 32,
+                        radius: 32.r,
                         backgroundImage: const AssetImage(
                           'assets/images/account_man.png',
                         ),
@@ -34,35 +35,35 @@ class AccountScreen extends StatelessWidget {
                         backgroundColor: AppColors.border,
                       ),
 
-                      const SizedBox(width: 16),
+                      SizedBox(width: 16.w),
 
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                              children: const [
+                              children: [
                                 Text(
                                   'Afsar Hossen',
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.w600,
                                     color: AppColors.textPrimary,
                                   ),
                                 ),
-                                SizedBox(width: 8),
+                                SizedBox(width: 8.w),
                                 Icon(
                                   Icons.edit_outlined,
-                                  size: 16,
+                                  size: 16.sp,
                                   color: AppColors.primary,
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 4),
-                            const Text(
+                            SizedBox(height: 4.h),
+                            Text(
                               'Imshuvo97@gmail.com',
                               style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 color: AppColors.textSecondary,
                               ),
                             ),
@@ -73,8 +74,8 @@ class AccountScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 20),
-                const Divider(color: AppColors.border, height: 1),
+                SizedBox(height: 20.h),
+                Divider(color: AppColors.border, height: 1.h),
 
                 // Меню
                 _menuItem('assets/icons/orders.svg', 'Orders'),
@@ -86,11 +87,11 @@ class AccountScreen extends StatelessWidget {
                 _menuItem('assets/icons/help.svg', 'Help'),
                 _menuItem('assets/icons/about.svg', 'About'),
 
-                const SizedBox(height: 24),
+                SizedBox(height: 24.h),
 
                 // Log Out
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.pushAndRemoveUntil(
@@ -103,24 +104,24 @@ class AccountScreen extends StatelessWidget {
                     },
                     child: Container(
                       width: double.infinity,
-                      padding: const EdgeInsets.symmetric(vertical: 18),
+                      padding: EdgeInsets.symmetric(vertical: 18.h),
                       decoration: BoxDecoration(
                         color: const Color(0xFFF2F3F2),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(16.r),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Icon(
                             Icons.logout,
-                            size: 22,
+                            size: 22.sp,
                             color: AppColors.primary,
                           ),
-                          SizedBox(width: 12),
+                          SizedBox(width: 12.w),
                           Text(
                             'Log Out',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColors.primary,
                             ),
@@ -131,7 +132,7 @@ class AccountScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 24),
+                SizedBox(height: 24.h),
               ],
             ),
           ),
@@ -144,49 +145,49 @@ class AccountScreen extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 16,
+          padding: EdgeInsets.symmetric(
+            horizontal: 24.w,
+            vertical: 16.h,
           ),
           child: Row(
             children: [
               SvgPicture.asset(
                 iconPath,
-                width: 18,
-                height: 18,
+                width: 18.w,
+                height: 18.h,
                 colorFilter: const ColorFilter.mode(
                   AppColors.textPrimary,
                   BlendMode.srcIn,
                 ),
-                placeholderBuilder: (context) => const Icon(
+                placeholderBuilder: (context) => Icon(
                   Icons.circle_outlined,
-                  size: 18,
+                  size: 18.sp,
                   color: AppColors.textPrimary,
                 ),
               ),
-              const SizedBox(width: 16),
+              SizedBox(width: 16.w),
               Expanded(
                 child: Text(
                   label,
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: 16.sp,
                     color: AppColors.textPrimary,
                   ),
                 ),
               ),
-              const Icon(
+              Icon(
                 Icons.chevron_right,
-                size: 22,
+                size: 22.sp,
                 color: AppColors.textSecondary,
               ),
             ],
           ),
         ),
-        const Divider(
+        Divider(
           color: AppColors.border,
-          height: 1,
-          indent: 24,
-          endIndent: 24,
+          height: 1.h,
+          indent: 24.w,
+          endIndent: 24.w,
         ),
       ],
     );

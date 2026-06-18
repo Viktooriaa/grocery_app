@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery_app/screens/login_screen.dart';
 
 import '../core/theme/app_colors.dart';
@@ -21,7 +22,7 @@ class LocationScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            height: 320,
+            height: 320.h,
             child: Image.asset(
               "assets/images/gradient.png",
               fit: BoxFit.cover,
@@ -33,7 +34,7 @@ class LocationScreen extends StatelessWidget {
             bottom: 0,
             left: 0,
             right: 0,
-            height: 220,
+            height: 220.h,
             child: Image.asset(
               "assets/images/gradient_bottom.png",
               fit: BoxFit.cover,
@@ -50,56 +51,56 @@ class LocationScreen extends StatelessWidget {
                     MediaQuery.of(context).padding.top -
                     MediaQuery.of(context).padding.bottom,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
 
                       // Кнопка назад
                       GestureDetector(
                         onTap: () => Navigator.pop(context),
-                        child: const Icon(
+                        child: Icon(
                           Icons.arrow_back_ios_new,
-                          size: 22,
+                          size: 22.sp,
                           color: Colors.black,
                         ),
                       ),
 
-                      const SizedBox(height: 24),
+                      SizedBox(height: 24.h),
 
                       //  Зображення карти
                       Center(
                         child: Image.asset(
                           "assets/images/map.png",
-                          height: 150,
+                          height: 150.h,
                         ),
                       ),
 
-                      const SizedBox(height: 28),
+                      SizedBox(height: 28.h),
 
                       // Заголовок
-                      const Center(
+                      Center(
                         child: Text(
                           "Select Your Location",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 24.sp,
                             fontWeight: FontWeight.w600,
                             color: AppColors.textPrimary,
                           ),
                         ),
                       ),
 
-                      const SizedBox(height: 12),
+                      SizedBox(height: 12.h),
 
                       // Підзаголовок
-                      const Center(
+                      Center(
                         child: Text(
                           "Switch on your location to stay in tune with\nwhat's happening in your area",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             color: AppColors.textSecondary,
                             height: 1.5,
                           ),
@@ -113,61 +114,61 @@ class LocationScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // Your Zone
-                            const Text(
+                            Text(
                               "Your Zone",
                               style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 color: AppColors.textSecondary,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text(
                                   "Banasree",
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.w500,
                                     color: AppColors.textPrimary,
                                   ),
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.keyboard_arrow_down,
                                   color: AppColors.textPrimary,
                                 ),
                               ],
                             ),
-                            const Divider(height: 20, thickness: 0.8),
+                            Divider(height: 20.h, thickness: 0.8),
 
-                            const SizedBox(height: 20),
+                            SizedBox(height: 20.h),
 
                             // Your Area
-                            const Text(
+                            Text(
                               "Your Area",
                               style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 color: AppColors.textSecondary,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text(
                                   "Types of your area",
                                   style: TextStyle(
-                                    fontSize: 16,
-                                    color: Color(0xFFBDBDBD),
+                                    fontSize: 16.sp,
+                                    color: const Color(0xFFBDBDBD),
                                   ),
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.keyboard_arrow_down,
                                   color: Color(0xFFBDBDBD),
                                 ),
                               ],
                             ),
-                            const Divider(height: 20, thickness: 0.8),
+                            Divider(height: 20.h, thickness: 0.8),
                           ],
                         ),
                       ),
@@ -175,7 +176,7 @@ class LocationScreen extends StatelessWidget {
                       // Кнопка Submit
                       SizedBox(
                         width: double.infinity,
-                        height: 58,
+                        height: 58.h,
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -189,22 +190,22 @@ class LocationScreen extends StatelessWidget {
                             backgroundColor: AppColors.primary,
                             elevation: 0,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(18.r),
                             ),
                           ),
-                          child: const Text(
+                          child: Text(
                             "Submit",
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColors.background,
-                              letterSpacing: 0.3,
+                              letterSpacing: 0.3.sp,
                             ),
                           ),
                         ),
                       ),
 
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                     ],
                   ),
                 ),

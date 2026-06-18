@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery_app/screens/account_screen.dart';
 import 'package:grocery_app/screens/home_screen.dart';
 import 'package:grocery_app/screens/explore_screen.dart';
@@ -59,9 +60,9 @@ class _MainScreenState extends State<MainScreen> {
       ),
 
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 10),
+        padding: EdgeInsets.only(bottom: 10.h),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: EdgeInsets.symmetric(vertical: 8.h),
           decoration: const BoxDecoration(
             color: AppColors.background,
             border: Border(top: BorderSide(color: AppColors.border)),
@@ -78,8 +79,8 @@ class _MainScreenState extends State<MainScreen> {
                     children: [
                       SvgPicture.asset(
                         _navItems[i]['icon'],
-                        width: 24,
-                        height: 24,
+                        width: 24.w,
+                        height: 24.h,
                         colorFilter: ColorFilter.mode(
                           selected
                               ? AppColors.primary
@@ -87,11 +88,11 @@ class _MainScreenState extends State<MainScreen> {
                           BlendMode.srcIn,
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      SizedBox(height: 4.h),
                       Text(
                         _navItems[i]['label'],
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 11.sp,
                           color: selected
                               ? AppColors.primary
                               : AppColors.textSecondary,

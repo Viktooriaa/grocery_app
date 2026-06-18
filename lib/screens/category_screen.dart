@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/theme/app_colors.dart';
 import 'filter_screen.dart';
@@ -57,23 +58,23 @@ class _CategoryScreenState extends State<CategoryScreen> {
             children: [
               //  AppBar
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16, vertical: 12),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 16.w, vertical: 12.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
                       onTap: () => Navigator.pop(context),
-                      child: const Icon(
+                      child: Icon(
                         Icons.arrow_back_ios_new,
-                        size: 20,
+                        size: 20.sp,
                         color: AppColors.textPrimary,
                       ),
                     ),
                     Text(
                       widget.categoryName,
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.textPrimary,
                       ),
@@ -91,9 +92,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           applyFilters(result);
                         }
                       },
-                      child: const Icon(
+                      child: Icon(
                         Icons.tune,
-                        size: 22,
+                        size: 22.sp,
                         color: AppColors.textPrimary,
                       ),
                     ),
@@ -104,12 +105,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
               // Продукти
               Expanded(
                 child: GridView.builder(
-                  padding: const EdgeInsets.all(16),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
                   gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
+                  SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12.h,
+                    crossAxisSpacing: 12.w,
                     childAspectRatio: 0.75,
                   ),
                   itemCount: filteredProducts.length,
@@ -128,40 +129,40 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.background,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
         border: Border.all(color:  AppColors.border, width: 0.8),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Image.asset(
                 item['image'],
-                height: 100,
+                height: 100.h,
                 fit: BoxFit.contain,
-                errorBuilder: (c, e, s) => const Icon(
+                errorBuilder: (c, e, s) => Icon(
                   Icons.image_not_supported_outlined,
                   color: AppColors.border,
-                  size: 40,
+                  size: 40.sp,
                 ),
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
               item['name'],
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textPrimary,
               ),
             ),
-            const SizedBox(height: 2),
+            SizedBox(height: 2.h),
             Text(
               item['desc'],
-              style: const TextStyle(
-                fontSize: 12,
+              style: TextStyle(
+                fontSize: 12.sp,
                 color: AppColors.textSecondary,
               ),
             ),
@@ -171,23 +172,23 @@ class _CategoryScreenState extends State<CategoryScreen> {
               children: [
                 Text(
                   "\$${item['price'].toStringAsFixed(2)}",
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textPrimary,
                   ),
                 ),
                 Container(
-                  width: 36,
-                  height: 36,
+                  width: 36.w,
+                  height: 36.h,
                   decoration: BoxDecoration(
                     color:  AppColors.primary,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.add,
                     color: AppColors.background,
-                    size: 20,
+                    size: 20.sp,
                   ),
                 ),
               ],

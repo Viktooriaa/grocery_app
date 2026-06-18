@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/theme/app_colors.dart';
 
@@ -59,27 +60,27 @@ class FavoritesScreen extends StatelessWidget {
             children: [
 
               /// HEADER
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 16.h),
                 child: Text(
                   'Favourite',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textPrimary,
                   ),
                 ),
               ),
 
-              const Divider(height: 1),
+              Divider(height: 1.h),
 
               /// LIST
               Expanded(
                 child: ListView.separated(
                   itemCount: items.length,
-                  separatorBuilder: (_, _) => const Divider(
-                    height: 1,
-                    indent: 96,
+                  separatorBuilder: (_, _) => Divider(
+                    height: 1.h,
+                    indent: 96.w,
                   ),
                   itemBuilder: (context, i) => _item(items[i]),
                 ),
@@ -87,10 +88,10 @@ class FavoritesScreen extends StatelessWidget {
 
               /// BUTTON
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.all(16.w),
                 child: SizedBox(
                   width: double.infinity,
-                  height: 58,
+                  height: 58.h,
                   child: ElevatedButton(
                     onPressed: () {
 
@@ -111,14 +112,14 @@ class FavoritesScreen extends StatelessWidget {
                       backgroundColor: AppColors.primary,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(16.r),
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Add All To Cart',
                       style: TextStyle(
                         color: AppColors.background,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -140,12 +141,12 @@ class FavoritesScreen extends StatelessWidget {
       builder: (_) {
         return Dialog(
           backgroundColor: Colors.transparent,
-          insetPadding: const EdgeInsets.symmetric(horizontal: 24),
+          insetPadding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Container(
-            padding: const EdgeInsets.fromLTRB(24, 24, 24, 20),
+            padding: EdgeInsets.fromLTRB(24.w, 24.h, 24.w, 20.h),
             decoration: BoxDecoration(
               color: AppColors.background,
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(24.r),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -160,45 +161,45 @@ class FavoritesScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
 
                 /// IMAGE
                 Image.asset(
                   'assets/images/error_page.png',
-                  width: 180,
+                  width: 180.w,
                 ),
 
-                const SizedBox(height: 28),
+                SizedBox(height: 28.h),
 
                 /// TITLE
-                const Text(
+                Text(
                   'Oops! Order Failed',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 28,
+                    fontSize: 28.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textPrimary,
                   ),
                 ),
 
-                const SizedBox(height: 14),
+                SizedBox(height: 14.h),
 
                 /// SUBTITLE
-                const Text(
+                Text(
                   'Something went terribly wrong.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: AppColors.textSecondary,
                   ),
                 ),
 
-                const SizedBox(height: 32),
+                SizedBox(height: 32.h),
 
                 /// BUTTON
                 SizedBox(
                   width: double.infinity,
-                  height: 58,
+                  height: 58.h,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -207,13 +208,13 @@ class FavoritesScreen extends StatelessWidget {
                       backgroundColor: AppColors.primary,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(18.r),
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Please Try Again',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.background,
                       ),
@@ -221,17 +222,17 @@ class FavoritesScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 18),
+                SizedBox(height: 18.h),
 
                 /// BACK
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: const Text(
+                  child: Text(
                     'Back to home',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColors.textPrimary,
                     ),
@@ -248,24 +249,24 @@ class FavoritesScreen extends StatelessWidget {
   /// ITEM
   Widget _item(Map<String, dynamic> item) {
     return SizedBox(
-      height: 88,
+      height: 88.h,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
 
             /// IMAGE
             SizedBox(
-              width: 64,
-              height: 64,
+              width: 64.w,
+              height: 64.h,
               child: Image.asset(
                 item['image'],
                 fit: BoxFit.contain,
               ),
             ),
 
-            const SizedBox(width: 16),
+            SizedBox(width: 16.w),
 
             /// TEXT
             Expanded(
@@ -277,32 +278,32 @@ class FavoritesScreen extends StatelessWidget {
                   /// NAME
                   Text(
                     item['name'],
-                    style: const TextStyle(
-                      fontSize: 16,
+                    style: TextStyle(
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.textPrimary,
                     ),
                   ),
 
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4.h),
 
                   /// DESC
                   Text(
                     item['desc'],
-                    style: const TextStyle(
-                      fontSize: 13,
+                    style: TextStyle(
+                      fontSize: 13.sp,
                       color: AppColors.textSecondary,
                     ),
                   ),
 
                   /// OUT OF STOCK
                   if (item['isAvailable'] == false)
-                    const Padding(
-                      padding: EdgeInsets.only(top: 4),
+                    Padding(
+                      padding: EdgeInsets.only(top: 4.h),
                       child: Text(
                         'Out of stock',
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           color: Colors.red,
                           fontWeight: FontWeight.w500,
                         ),
@@ -317,16 +318,16 @@ class FavoritesScreen extends StatelessWidget {
               children: [
                 Text(
                   "\$${item['price'].toStringAsFixed(2)}",
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textPrimary,
                   ),
                 ),
-                const SizedBox(width: 6),
-                const Icon(
+                SizedBox(width: 6.w),
+                Icon(
                   Icons.chevron_right,
-                  size: 22,
+                  size: 22.sp,
                   color: AppColors.textPrimary,
                 ),
               ],

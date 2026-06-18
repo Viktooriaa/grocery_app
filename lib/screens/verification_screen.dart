@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery_app/screens/select_location_screen.dart';
 
 import '../core/theme/app_colors.dart';
@@ -27,7 +28,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   @override
   Widget build(BuildContext context) {
     final keyboard = MediaQuery.of(context).viewInsets.bottom;
-    final double bottomOffset = keyboard > 0 ? keyboard + 24.0 : 32.0;
+    final double bottomOffset = keyboard > 0 ? keyboard + 24.h : 32.h;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -38,7 +39,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
             top: 0,
             left: 0,
             right: 0,
-            height: 300,
+            height: 300.h,
             child: Image.asset(
               "assets/images/gradient.png",
               fit: BoxFit.cover,
@@ -50,7 +51,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
             bottom: 0,
             left: 0,
             right: 0,
-            height: 300,
+            height: 300.h,
             child: Image.asset(
               "assets/images/gradient_bottom.png",
               fit: BoxFit.cover,
@@ -60,48 +61,48 @@ class _VerificationScreenState extends State<VerificationScreen> {
           /// CONTENT
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
                   /// BACK
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15.h),
                     child: GestureDetector(
                       onTap: () => Navigator.pop(context),
-                      child: const Icon(
+                      child: Icon(
                         Icons.arrow_back_ios_new,
-                        size: 22,
+                        size: 22.sp,
                         color: Colors.black,
                       ),
                     ),
                   ),
 
-                  const SizedBox(height: 50),
+                  SizedBox(height: 50.h),
 
                   /// TITLE
-                  const Text(
+                  Text(
                     "Enter your 4-digit code",
                     style: TextStyle(
-                      fontSize: 26,
+                      fontSize: 26.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.textPrimary,
                     ),
                   ),
 
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
 
                   /// LABEL
-                  const Text(
+                  Text(
                     "Code",
                     style: TextStyle(
-                      fontSize: 13,
-                      color: Color(0xFF828282),
+                      fontSize: 13.sp,
+                      color: const Color(0xFF828282),
                     ),
                   ),
 
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
 
                   /// INPUT
                   TextField(
@@ -110,16 +111,16 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     keyboardType: TextInputType.number,
                     maxLength: 4,
                     autofocus: true,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      letterSpacing: 12,
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      letterSpacing: 12.sp,
                       color: AppColors.textPrimary,
                     ),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: "- - - -",
                       hintStyle: TextStyle(
-                        letterSpacing: 12,
-                        color: Color(0xFFBDBDBD),
+                        letterSpacing: 12.sp,
+                        color: const Color(0xFFBDBDBD),
                       ),
                       counterText: "",
                       border: InputBorder.none,
@@ -139,13 +140,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
           /// RESEND CODE
           Positioned(
-            left: 24,
-            bottom: bottomOffset + 20,
-            child: const Text(
+            left: 24.w,
+            bottom: bottomOffset + 20.h,
+            child: Text(
               "Resend Code",
               style: TextStyle(
                 color: AppColors.primary,
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -153,8 +154,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
           /// FLOAT BUTTON
           Positioned(
-            right: 24,
-            bottom: keyboard > 0 ? keyboard + 24 : 32,
+            right: 24.w,
+            bottom: keyboard > 0 ? keyboard + 24.h : 32.h,
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -165,10 +166,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 );
               },
               child: Container(
-                width: 64,
-                height: 64,
+                width: 64.w,
+                height: 64.h,
                 decoration: BoxDecoration(
-                  color:  AppColors.primary,
+                  color: AppColors.primary,
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -178,10 +179,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ),
                   ],
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.arrow_forward_ios,
                   color: AppColors.background,
-                  size: 18,
+                  size: 18.sp,
                 ),
               ),
             ),

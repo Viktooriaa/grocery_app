@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/theme/app_colors.dart';
 import 'verification_screen.dart';
 
@@ -35,7 +36,7 @@ class _NumberScreenState extends State<NumberScreen> {
             top: 0,
             left: 0,
             right: 0,
-            height: 300,
+            height: 300.h,
             child: Image.asset(
               "assets/images/gradient.png",
               fit: BoxFit.cover,
@@ -47,7 +48,7 @@ class _NumberScreenState extends State<NumberScreen> {
             bottom: 0,
             left: 0,
             right: 0,
-            height: 300,
+            height: 300.h,
             child: Image.asset(
               "assets/images/gradient_bottom.png",
               fit: BoxFit.cover,
@@ -57,68 +58,68 @@ class _NumberScreenState extends State<NumberScreen> {
           /// CONTENT
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// BACK
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15.h),
                     child: GestureDetector(
                       onTap: () => Navigator.pop(context),
-                      child: const Icon(
+                      child: Icon(
                         Icons.arrow_back_ios_new,
-                        size: 22,
+                        size: 22.sp,
                         color: Colors.black,
                       ),
                     ),
                   ),
 
-                  const SizedBox(height: 50),
+                  SizedBox(height: 50.h),
 
                   /// TITLE
-                  const Text(
+                  Text(
                     "Enter your mobile number",
                     style: TextStyle(
-                      fontSize: 26,
+                      fontSize: 26.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.textPrimary,
                     ),
                   ),
 
-                  const SizedBox(height: 24),
+                  SizedBox(height: 24.h),
 
                   /// LABEL
-                  const Text(
+                  Text(
                     "Mobile Number",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
-                      color: Color(0xFF828282),
+                      color: const Color(0xFF828282),
                     ),
                   ),
 
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
 
                   /// INPUT
                   Row(
                     children: [
                       Container(
-                        width: 26,
-                        height: 18,
+                        width: 26.w,
+                        height: 18.h,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(3),
+                          borderRadius: BorderRadius.circular(3.r),
                           color: const Color(0xFF006A4E),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: CircleAvatar(
-                            radius: 5,
-                            backgroundColor: Color(0xFFF42A41),
+                            radius: 5.r,
+                            backgroundColor: const Color(0xFFF42A41),
                           ),
                         ),
                       ),
 
-                      const SizedBox(width: 10),
+                      SizedBox(width: 10.w),
 
                       Expanded(
                         child: TextField(
@@ -128,8 +129,8 @@ class _NumberScreenState extends State<NumberScreen> {
                             hintText: "+880",
                             border: InputBorder.none,
                           ),
-                          style: const TextStyle(
-                            fontSize: 16,
+                          style: TextStyle(
+                            fontSize: 16.sp,
                             color: AppColors.textPrimary,
                           ),
                         ),
@@ -147,8 +148,8 @@ class _NumberScreenState extends State<NumberScreen> {
 
           /// FLOAT BUTTON
           Positioned(
-            right: 24,
-            bottom: keyboard > 0 ? keyboard + 24 : 32,
+            right: 24.w,
+            bottom: keyboard > 0 ? keyboard + 24.h : 32.h,
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -159,10 +160,10 @@ class _NumberScreenState extends State<NumberScreen> {
                 );
               },
               child: Container(
-                width: 64,
-                height: 64,
+                width: 64.w,
+                height: 64.h,
                 decoration: BoxDecoration(
-                  color:  AppColors.primary,
+                  color: AppColors.primary,
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -172,10 +173,10 @@ class _NumberScreenState extends State<NumberScreen> {
                     ),
                   ],
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.arrow_forward_ios,
                   color: AppColors.background,
-                  size: 18,
+                  size: 18.sp,
                 ),
               ),
             ),

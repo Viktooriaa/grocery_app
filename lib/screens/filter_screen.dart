@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/theme/app_colors.dart';
 
@@ -35,7 +36,7 @@ class _FilterScreenState extends State<FilterScreen> {
 
             ///  HEADER
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -43,14 +44,14 @@ class _FilterScreenState extends State<FilterScreen> {
                     onTap: () => Navigator.pop(context),
                     child: const Icon(Icons.close),
                   ),
-                  const Text(
+                  Text(
                     "Filters",
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(width: 24),
+                  SizedBox(width: 24.w),
                 ],
               ),
             ),
@@ -58,14 +59,14 @@ class _FilterScreenState extends State<FilterScreen> {
             ///  BODY
             Expanded(
               child: Container(
-                decoration: const BoxDecoration(
-                  color: Color(0xFFF2F3F2),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF2F3F2),
                   borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(24),
+                    top: Radius.circular(24.r),
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                   child: Column(
                     children: [
 
@@ -77,15 +78,15 @@ class _FilterScreenState extends State<FilterScreen> {
                             children: [
 
                               /// CATEGORIES
-                              const Text(
+                              Text(
                                 "Categories",
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
 
-                              const SizedBox(height: 12),
+                              SizedBox(height: 12.h),
 
                               ...categories.keys.map((key) {
                                 return _checkboxItem(
@@ -99,18 +100,18 @@ class _FilterScreenState extends State<FilterScreen> {
                                 );
                               }),
 
-                              const SizedBox(height: 24),
+                              SizedBox(height: 24.h),
 
                               /// BRAND
-                              const Text(
+                              Text(
                                 "Brand",
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 18.sp,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
 
-                              const SizedBox(height: 12),
+                              SizedBox(height: 12.h),
 
                               ...brands.keys.map((key) {
                                 return _checkboxItem(
@@ -131,20 +132,20 @@ class _FilterScreenState extends State<FilterScreen> {
                       ///  BUTTON
                       SizedBox(
                         width: double.infinity,
-                        height: 60,
+                        height: 60.h,
                         child: ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             backgroundColor:  AppColors.primary,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(16.r),
                             ),
                           ),
-                          child: const Text(
+                          child: Text(
                             "Apply Filter",
                             style: TextStyle(
                                 color: AppColors.background,
-                                fontSize: 16,
+                                fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
                                ),
                           ),

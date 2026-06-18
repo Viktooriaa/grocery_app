@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/theme/app_colors.dart';
 
@@ -21,35 +22,35 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56,
+      height: 56.h,
       child: TextField(
         controller: controller,
         obscureText: obscureText,
         keyboardType: keyboardType,
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: const TextStyle(
+          hintStyle: TextStyle(
             color: AppColors.textSecondary,
-            fontSize: 16,
+            fontSize: 16.sp,
           ),
           filled: true,
           fillColor: AppColors.background,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 16.w,
             vertical: 0,
           ),
           suffixIcon: suffixIcon,
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
             borderSide: const BorderSide(
               color: AppColors.border,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
+            borderRadius: BorderRadius.circular(16.r),
+            borderSide: BorderSide(
               color: AppColors.primary,
-              width: 1.5,
+              width: 1.5.w,
             ),
           ),
         ),

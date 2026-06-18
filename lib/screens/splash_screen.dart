@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../core/theme/app_colors.dart';
 import 'onboarding_screen.dart';
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  AppColors.primary,
+      backgroundColor: AppColors.primary,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -37,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               SvgPicture.asset(
                 'assets/icons/logo.svg',
-                width: MediaQuery.of(context).size.width * 0.65,
+                width: 0.65.sw,
               ),
             ],
           ),

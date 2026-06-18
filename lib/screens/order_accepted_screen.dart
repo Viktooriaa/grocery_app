@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/theme/app_colors.dart';
 
 class OrderAcceptedScreen extends StatelessWidget {
@@ -18,7 +19,7 @@ class OrderAcceptedScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            height: 260,
+            height: 260.h,
             child: Image.asset(
               'assets/images/gradient.png',
               fit: BoxFit.cover,
@@ -31,7 +32,7 @@ class OrderAcceptedScreen extends StatelessWidget {
             bottom: 0,
             left: 0,
             right: 0,
-            height: 180,
+            height: 180.h,
             child: Image.asset(
               'assets/images/gradient_bottom.png',
               fit: BoxFit.cover,
@@ -42,7 +43,7 @@ class OrderAcceptedScreen extends StatelessWidget {
           /// CONTENT
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: EdgeInsets.symmetric(horizontal: 25.w),
               child: Column(
                 children: [
 
@@ -52,37 +53,37 @@ class OrderAcceptedScreen extends StatelessWidget {
                   /// IMAGE
                   Image.asset(
                     'assets/images/order_accepted.png',
-                    width: 250,
+                    width: 250.w,
                     fit: BoxFit.contain,
-                    errorBuilder: (c, e, s) => const Icon(
+                    errorBuilder: (c, e, s) => Icon(
                       Icons.check_circle,
-                      size: 130,
+                      size: 130.sp,
                       color: AppColors.primary,
                     ),
                   ),
 
-                  const SizedBox(height: 50),
+                  SizedBox(height: 50.h),
 
                   /// TITLE
-                  const Text(
+                  Text(
                     'Your Order has been\naccepted',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 28.sp,
                       height: 1.3,
                       fontWeight: FontWeight.w600,
                       color: AppColors.textPrimary,
                     ),
                   ),
 
-                  const SizedBox(height: 18),
+                  SizedBox(height: 18.h),
 
                   /// SUBTITLE
-                  const Text(
+                  Text(
                     "Your items has been placed and is on\nit's way to being processed",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       height: 1.6,
                       color: AppColors.textSecondary,
                     ),
@@ -93,20 +94,20 @@ class OrderAcceptedScreen extends StatelessWidget {
                   /// BUTTON
                   SizedBox(
                     width: double.infinity,
-                    height: 62,
+                    height: 62.h,
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(19),
+                          borderRadius: BorderRadius.circular(19.r),
                         ),
                       ),
-                      child: const Text(
+                      child: Text(
                         'Track Order',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
@@ -114,7 +115,7 @@ class OrderAcceptedScreen extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 22),
+                  SizedBox(height: 22.h),
 
                   /// BACK TO HOME
                   GestureDetector(
@@ -124,10 +125,10 @@ class OrderAcceptedScreen extends StatelessWidget {
                             (route) => route.isFirst,
                       );
                     },
-                    child: const Text(
+                    child: Text(
                       'Back to home',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                         color: AppColors.textPrimary,
                       ),

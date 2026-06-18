@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/theme/app_colors.dart';
 import '../widgets/primary_button.dart';
 import 'number_screen.dart';
@@ -13,13 +14,13 @@ class SignInScreen extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// TOP IMAGE
               SizedBox(
-                height: 374,
+                height: 374.h,
                 width: double.infinity,
                 child: Image.asset(
                   "assets/images/sign_in.png",
@@ -28,20 +29,20 @@ class SignInScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
               /// TITLE
-              const Text(
+              Text(
                 "Get your groceries\nwith nectar",
                 style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 26.sp,
                   fontWeight: FontWeight.w600,
                   height: 1.3,
                   color: AppColors.textPrimary,
                 ),
               ),
 
-              const SizedBox(height: 30),
+              SizedBox(height: 30.h),
 
               /// PHONE FIELD
               GestureDetector(
@@ -52,7 +53,7 @@ class SignInScreen extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  padding: EdgeInsets.symmetric(vertical: 12.h),
                   decoration: const BoxDecoration(
                     border: Border(
                       bottom: BorderSide(color: AppColors.border),
@@ -62,14 +63,14 @@ class SignInScreen extends StatelessWidget {
                     children: [
                       Image.asset(
                         "assets/images/flag.png",
-                        width: 32,
-                        height: 26,
+                        width: 32.w,
+                        height: 26.h,
                       ),
-                      const SizedBox(width: 10),
-                      const Text(
+                      SizedBox(width: 10.w),
+                      Text(
                         "+880",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           color: AppColors.textPrimary,
                         ),
                       ),
@@ -77,17 +78,17 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
               /// OR TEXT
-              const Center(
+              Center(
                 child: Text(
                   "Or connect with social media",
-                  style: TextStyle(color: Color(0xFF828282), fontSize: 14),
+                  style: TextStyle(color: const Color(0xFF828282), fontSize: 14.sp),
                 ),
               ),
 
-              const SizedBox(height: 24),
+              SizedBox(height: 24.h),
 
               /// GOOGLE BUTTON
               PrimaryButton(
@@ -97,7 +98,7 @@ class SignInScreen extends StatelessWidget {
                 onPressed: () {},
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               /// FACEBOOK BUTTON
               PrimaryButton(

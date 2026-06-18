@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/theme/app_colors.dart';
 
@@ -19,13 +20,13 @@ class SocialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56,
+      height: 56.h,
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: color,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(16.r),
           ),
         ),
         onPressed: onPressed,
@@ -34,13 +35,13 @@ class SocialButton extends StatelessWidget {
           children: [
             Image.asset(
               iconPath,
-              height: 20,
+              height: 20.h,
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12.w),
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 16,
+              style: TextStyle(
+                fontSize: 16.sp,
                 color: AppColors.background,
               ),
             ),

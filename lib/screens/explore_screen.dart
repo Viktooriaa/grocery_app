@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery_app/screens/category_screen.dart';
 
 import '../core/theme/app_colors.dart';
@@ -105,31 +106,31 @@ class _ExploreScreenState extends State<ExploreScreen> {
             physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
-                const SizedBox(height: 16),
-                const Center(
+                SizedBox(height: 16.h),
+                Center(
                   child: Text(
                     'Find Products',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.textPrimary,
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: Container(
-                    height: 48,
+                    height: 48.h,
                     decoration: BoxDecoration(
                       color: const Color(0xFFF2F3F2),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(12.r),
                     ),
-                    child: const TextField(
+                    child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Search Store',
                         hintStyle: TextStyle(
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           color: AppColors.textSecondary,
                         ),
                         prefixIcon: Icon(
@@ -137,22 +138,22 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           color: AppColors.textSecondary,
                         ),
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(vertical: 14),
+                        contentPadding: EdgeInsets.symmetric(vertical: 14.h),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
+                    SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12.h,
+                      crossAxisSpacing: 12.w,
                       childAspectRatio: 1.0,
                     ),
                     itemCount: _categories.length,
@@ -160,7 +161,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         _categoryCard(_categories[i]),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
               ],
             ),
           ),
@@ -185,29 +186,29 @@ class _ExploreScreenState extends State<ExploreScreen> {
       child: Container(
         decoration: BoxDecoration(
           color: item['color'] as Color,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 100,
+              height: 100.h,
               child: Image.asset(
                 item['image'],
                 fit: BoxFit.contain,
-                errorBuilder: (c, e, s) => const Icon(
+                errorBuilder: (c, e, s) => Icon(
                   Icons.image_not_supported_outlined,
                   color: AppColors.border,
-                  size: 48,
+                  size: 48.sp,
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Text(
               item['name'],
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textPrimary,
                 height: 1.4,

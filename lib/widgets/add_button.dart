@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/theme/app_colors.dart';
 
@@ -10,18 +11,18 @@ class AddButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color:  AppColors.primary,
-      borderRadius: BorderRadius.circular(16),
+      color: AppColors.primary,
+      borderRadius: BorderRadius.circular(16.r),
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
         onTap: onPressed,
-        child: const SizedBox(
-          width: 48,
-          height: 48,
+        child: SizedBox(
+          width: 48.w,
+          height: 48.h,
           child: Icon(
             Icons.add,
             color: AppColors.background,
-            size: 24,
+            size: 24.sp,
           ),
         ),
       ),
