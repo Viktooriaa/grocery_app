@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery_app/screens/login_screen.dart';
 
+import '../core/constants/app_assets.dart';
+import '../core/constants/app_sizes.dart';
+import '../core/constants/app_strings.dart';
 import '../core/theme/app_colors.dart';
 
 class LocationScreen extends StatelessWidget {
@@ -10,7 +13,7 @@ class LocationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.transparent,
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
@@ -24,7 +27,7 @@ class LocationScreen extends StatelessWidget {
             right: 0,
             height: 320.h,
             child: Image.asset(
-              "assets/images/gradient.png",
+              AppAssets.gradient,
               fit: BoxFit.cover,
             ),
           ),
@@ -36,7 +39,7 @@ class LocationScreen extends StatelessWidget {
             right: 0,
             height: 220.h,
             child: Image.asset(
-              "assets/images/gradient_bottom.png",
+              AppAssets.gradientBottom,
               fit: BoxFit.cover,
             ),
           ),
@@ -46,12 +49,14 @@ class LocationScreen extends StatelessWidget {
             child: SingleChildScrollView(
               physics: const ClampingScrollPhysics(),
               child: Container(
-                color: Colors.transparent,
+                color: AppColors.transparent,
                 height: MediaQuery.of(context).size.height -
                     MediaQuery.of(context).padding.top -
                     MediaQuery.of(context).padding.bottom,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppSizes.authHorizontal,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -63,7 +68,7 @@ class LocationScreen extends StatelessWidget {
                         child: Icon(
                           Icons.arrow_back_ios_new,
                           size: 22.sp,
-                          color: Colors.black,
+                          color: AppColors.black,
                         ),
                       ),
 
@@ -72,17 +77,16 @@ class LocationScreen extends StatelessWidget {
                       //  Зображення карти
                       Center(
                         child: Image.asset(
-                          "assets/images/map.png",
+                          AppAssets.map,
                           height: 150.h,
                         ),
                       ),
 
                       SizedBox(height: 28.h),
 
-                      // Заголовок
                       Center(
                         child: Text(
-                          "Select Your Location",
+                          AppStrings.selectYourLocation,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 24.sp,
@@ -94,10 +98,9 @@ class LocationScreen extends StatelessWidget {
 
                       SizedBox(height: 12.h),
 
-                      // Підзаголовок
                       Center(
                         child: Text(
-                          "Switch on your location to stay in tune with\nwhat's happening in your area",
+                          AppStrings.locationSubtitle,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14.sp,
@@ -107,7 +110,6 @@ class LocationScreen extends StatelessWidget {
                         ),
                       ),
 
-                      // СЕРЕДИНА
                       Expanded(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +117,7 @@ class LocationScreen extends StatelessWidget {
                           children: [
                             // Your Zone
                             Text(
-                              "Your Zone",
+                              AppStrings.yourZone,
                               style: TextStyle(
                                 fontSize: 13.sp,
                                 color: AppColors.textSecondary,
@@ -126,7 +128,7 @@ class LocationScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Banasree",
+                                  AppStrings.zoneName,
                                   style: TextStyle(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w500,
@@ -145,7 +147,7 @@ class LocationScreen extends StatelessWidget {
 
                             // Your Area
                             Text(
-                              "Your Area",
+                              AppStrings.yourArea,
                               style: TextStyle(
                                 fontSize: 13.sp,
                                 color: AppColors.textSecondary,
@@ -156,15 +158,15 @@ class LocationScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Types of your area",
+                                  AppStrings.areaType,
                                   style: TextStyle(
                                     fontSize: 16.sp,
-                                    color: const Color(0xFFBDBDBD),
+                                    color: AppColors.muted,
                                   ),
                                 ),
                                 const Icon(
                                   Icons.keyboard_arrow_down,
-                                  color: Color(0xFFBDBDBD),
+                                  color: AppColors.muted,
                                 ),
                               ],
                             ),
@@ -194,7 +196,7 @@ class LocationScreen extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            "Submit",
+                            AppStrings.submit,
                             style: TextStyle(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,

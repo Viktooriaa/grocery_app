@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.9
+  flutter_riverpod:
+    path: vendor/flutter_riverpod
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -66,7 +68,7 @@ flutter:
     - family: Gilroy
       fonts:
         - asset: assets/fonts/Gilroy-Regular.ttf
-        - asset: assets/fonts/Gilroy-SemiBold.ttf
+        - asset: assets/fonts/Gilroy-Semibold.ttf
           weight: 600
         - asset: assets/fonts/Gilroy-Bold.ttf
           weight: 700

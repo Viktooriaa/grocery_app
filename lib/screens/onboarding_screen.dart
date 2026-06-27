@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../core/constants/app_assets.dart';
+import '../core/constants/app_sizes.dart';
+import '../core/constants/app_strings.dart';
 import '../core/theme/app_colors.dart';
 import '../widgets/primary_button.dart';
 import 'sign_in_screen.dart';
@@ -15,7 +18,7 @@ class OnboardingScreen extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              "assets/images/onboarding.png",
+              AppAssets.onboarding,
               fit: BoxFit.cover,
             ),
           ),
@@ -26,7 +29,10 @@ class OnboardingScreen extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.transparent, Colors.black.withValues(alpha: 0.5)],
+                  colors: [
+                    AppColors.transparent,
+                    AppColors.black.withValues(alpha: 0.5),
+                  ],
                 ),
               ),
             ),
@@ -34,16 +40,16 @@ class OnboardingScreen extends StatelessWidget {
 
           SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.authHorizontal),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SvgPicture.asset('assets/icons/carrot.svg', width: 50.w),
+                  SvgPicture.asset(AppAssets.carrot, width: 50.w),
 
                   SizedBox(height: 20.h),
 
                   Text(
-                    "Welcome\nto our store",
+                    AppStrings.welcomeTitle,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 48.sp,
@@ -56,7 +62,7 @@ class OnboardingScreen extends StatelessWidget {
                   SizedBox(height: 12.h),
 
                   Text(
-                    "Ger your groceries in as fast as one hour",
+                    AppStrings.welcomeSubtitle,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16.sp, color: AppColors.background),
                   ),
@@ -66,7 +72,7 @@ class OnboardingScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24.w),
                     child: PrimaryButton(
-                      title: "Get Started",
+                      title: AppStrings.getStarted,
                       onPressed: () {
                         Navigator.push(
                           context,

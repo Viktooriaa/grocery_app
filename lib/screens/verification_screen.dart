@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery_app/screens/select_location_screen.dart';
 
+import '../core/constants/app_assets.dart';
+import '../core/constants/app_sizes.dart';
+import '../core/constants/app_strings.dart';
 import '../core/theme/app_colors.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -19,10 +22,16 @@ class _VerificationScreenState extends State<VerificationScreen> {
   void initState() {
     super.initState();
 
-    /// авто-фокус (відкриває клавіатуру)
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode.requestFocus();
     });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -41,7 +50,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
             right: 0,
             height: 300.h,
             child: Image.asset(
-              "assets/images/gradient.png",
+              AppAssets.gradient,
               fit: BoxFit.cover,
             ),
           ),
@@ -53,7 +62,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
             right: 0,
             height: 300.h,
             child: Image.asset(
-              "assets/images/gradient_bottom.png",
+              AppAssets.gradientBottom,
               fit: BoxFit.cover,
             ),
           ),
@@ -61,7 +70,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
           /// CONTENT
           SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.authHorizontal),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -74,7 +83,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       child: Icon(
                         Icons.arrow_back_ios_new,
                         size: 22.sp,
-                        color: Colors.black,
+                        color: AppColors.black,
                       ),
                     ),
                   ),
@@ -83,7 +92,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
                   /// TITLE
                   Text(
-                    "Enter your 4-digit code",
+                    AppStrings.enterCode,
                     style: TextStyle(
                       fontSize: 26.sp,
                       fontWeight: FontWeight.w600,
@@ -95,10 +104,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
                   /// LABEL
                   Text(
-                    "Code",
+                    AppStrings.code,
                     style: TextStyle(
                       fontSize: 13.sp,
-                      color: const Color(0xFF828282),
+                      color: AppColors.textSecondary,
                     ),
                   ),
 
@@ -117,12 +126,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       color: AppColors.textPrimary,
                     ),
                     decoration: InputDecoration(
-                      hintText: "- - - -",
+                      hintText: AppStrings.codeHint,
                       hintStyle: TextStyle(
                         letterSpacing: 12.sp,
-                        color: const Color(0xFFBDBDBD),
+                        color: AppColors.muted,
                       ),
-                      counterText: "",
+                      counterText: '',
                       border: InputBorder.none,
                     ),
                   ),
@@ -140,10 +149,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
           /// RESEND CODE
           Positioned(
-            left: 24.w,
+            left: AppSizes.authHorizontal,
             bottom: bottomOffset + 20.h,
             child: Text(
-              "Resend Code",
+              AppStrings.resendCode,
               style: TextStyle(
                 color: AppColors.primary,
                 fontSize: 16.sp,
@@ -154,7 +163,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
           /// FLOAT BUTTON
           Positioned(
-            right: 24.w,
+            right: AppSizes.authHorizontal,
             bottom: keyboard > 0 ? keyboard + 24.h : 32.h,
             child: GestureDetector(
               onTap: () {
@@ -173,7 +182,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.15),
+                      color: AppColors.shadow.withValues(alpha: 0.15),
                       blurRadius: 20,
                       offset: const Offset(0, 10),
                     ),

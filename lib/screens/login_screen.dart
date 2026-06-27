@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery_app/screens/sign_up_screen.dart';
 
+import '../core/constants/app_assets.dart';
+import '../core/constants/app_sizes.dart';
+import '../core/constants/app_strings.dart';
 import '../core/theme/app_colors.dart';
 import 'main_screen.dart';
 
@@ -22,10 +25,17 @@ class _LoginScreenState extends State<LoginScreen> {
     text: '12345678',
   );
 
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   InputDecoration _fieldDecoration({Widget? suffix}) {
     return InputDecoration(
       filled: true,
-      fillColor: Colors.transparent,
+      fillColor: AppColors.transparent,
       isDense: true,
       contentPadding: EdgeInsets.symmetric(vertical: 10.h),
       suffixIcon: suffix,
@@ -46,24 +56,30 @@ class _LoginScreenState extends State<LoginScreen> {
     return Theme(
       data: ThemeData(brightness: Brightness.light),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.transparent,
         resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
             Container(color: AppColors.background),
 
             Positioned(
-              top: 0, left: 0, right: 0, height: 320.h,
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 320.h,
               child: Image.asset(
-                "assets/images/gradient.png",
+                AppAssets.gradient,
                 fit: BoxFit.cover,
               ),
             ),
 
             Positioned(
-              bottom: 0, left: 0, right: 0, height: 220.h,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: 220.h,
               child: Image.asset(
-                "assets/images/gradient_bottom.png",
+                AppAssets.gradientBottom,
                 fit: BoxFit.cover,
               ),
             ),
@@ -72,9 +88,11 @@ class _LoginScreenState extends State<LoginScreen> {
               child: SingleChildScrollView(
                 physics: const ClampingScrollPhysics(),
                 child: Container(
-                  color: Colors.transparent,
+                  color: AppColors.transparent,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppSizes.authHorizontal,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -82,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         Center(
                           child: SvgPicture.asset(
-                            "assets/icons/carrot_orange.svg",
+                            AppAssets.carrotOrange,
                             height: 60.h,
                           ),
                         ),
@@ -90,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 60.h),
 
                         Text(
-                          "Loging",
+                          AppStrings.loginTitle,
                           style: TextStyle(
                             fontSize: 26.sp,
                             fontWeight: FontWeight.w600,
@@ -101,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 6.h),
 
                         Text(
-                          "Enter your emails and password",
+                          AppStrings.loginSubtitle,
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: AppColors.textSecondary,
@@ -111,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 36.h),
 
                         Text(
-                          "Email",
+                          AppStrings.email,
                           style: TextStyle(
                             fontSize: 13.sp,
                             color: AppColors.textSecondary,
@@ -131,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 28.h),
 
                         Text(
-                          "Password",
+                          AppStrings.password,
                           style: TextStyle(
                             fontSize: 13.sp,
                             color: AppColors.textSecondary,
@@ -170,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: GestureDetector(
                             onTap: () {},
                             child: Text(
-                              "Forgot Password?",
+                              AppStrings.forgotPassword,
                               style: TextStyle(
                                 fontSize: 14.sp,
                                 color: AppColors.textPrimary,
@@ -202,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             child: Text(
-                              "Log In",
+                              AppStrings.logIn,
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
@@ -220,7 +238,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Don't have an account? ",
+                                AppStrings.noAccount,
                                 style: TextStyle(
                                   fontSize: 14.sp,
                                   color: AppColors.textPrimary,
@@ -237,7 +255,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   );
                                 },
                                 child: Text(
-                                  "Sing up",
+                                  AppStrings.signUpLink,
                                   style: TextStyle(
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,

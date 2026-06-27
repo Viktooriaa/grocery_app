@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:grocery_app/screens/account_screen.dart';
-import 'package:grocery_app/screens/home_screen.dart';
-import 'package:grocery_app/screens/explore_screen.dart';
-import 'package:grocery_app/screens/my_cart_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grocery_app/core/data/grocery_data.dart';
+import 'package:grocery_app/screens/account_screen.dart';
+import 'package:grocery_app/screens/explore_screen.dart';
+import 'package:grocery_app/screens/home_screen.dart';
+import 'package:grocery_app/screens/my_cart_screen.dart';
 import '../core/theme/app_colors.dart';
 import 'favorites_screen.dart';
 
@@ -18,43 +19,16 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  final List<Map<String, dynamic>> _cartItems = [];
-
-  void addToCart(Map<String, dynamic> product) {
-    setState(() {
-      final index = _cartItems.indexWhere(
-            (item) => item['name'] == product['name'],
-      );
-
-      if (index != -1) {
-        _cartItems[index]['quantity']++;
-      } else {
-        _cartItems.add({
-          ...product,
-          'quantity': 1,
-        });
-      }
-    });
-  }
-
-  final List<Map<String, dynamic>> _navItems = [
-    {'icon': 'assets/icons/shop.svg', 'label': 'Shop'},
-    {'icon': 'assets/icons/explore.svg', 'label': 'Explore'},
-    {'icon': 'assets/icons/cart.svg', 'label': 'Cart'},
-    {'icon': 'assets/icons/favorite.svg', 'label': 'Favourite'},
-    {'icon': 'assets/icons/account.svg', 'label': 'Account'},
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
         children: [
-          HomeScreen(onAddToCart: addToCart),
+          const HomeScreen(),
           const ExploreScreen(),
-          MyCartScreen(cartItems: _cartItems),
-          FavoritesScreen(onAddToCart: addToCart),
+          const MyCartScreen(),
+          const FavoritesScreen(),
           const AccountScreen(),
         ],
       ),
@@ -68,8 +42,9 @@ class _MainScreenState extends State<MainScreen> {
             border: Border(top: BorderSide(color: AppColors.border)),
           ),
           child: Row(
-            children: List.generate(_navItems.length, (i) {
+            children: List.generate(AppGroceryData.navItems.length, (i) {
               final selected = i == _selectedIndex;
+              final item = AppGroceryData.navItems[i];
 
               return Expanded(
                 child: GestureDetector(
@@ -78,7 +53,7 @@ class _MainScreenState extends State<MainScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SvgPicture.asset(
-                        _navItems[i]['icon'],
+                        item.iconPath,
                         width: 24.w,
                         height: 24.h,
                         colorFilter: ColorFilter.mode(
@@ -90,7 +65,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       SizedBox(height: 4.h),
                       Text(
-                        _navItems[i]['label'],
+                        item.label,
                         style: TextStyle(
                           fontSize: 11.sp,
                           color: selected

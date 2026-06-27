@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../core/constants/app_sizes.dart';
+import '../core/constants/app_strings.dart';
+import '../core/data/grocery_data.dart';
+import '../core/models/app_models.dart';
 import '../core/theme/app_colors.dart';
+import '../widgets/filter_checkbox_item.dart';
 
 class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});
@@ -11,32 +16,26 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FilterScreen> {
-  final Map<String, bool> categories = {
-    "Eggs": true,
-    "Noodles & Pasta": false,
-    "Chips & Crisps": false,
-    "Fast Food": false,
+  late final Map<String, bool> categories = {
+    for (final item in AppGroceryData.filterCategories) item: item == 'Eggs',
   };
 
-  final Map<String, bool> brands = {
-    "Individual Collection": false,
-    "Cocola": true,
-    "Ifad": false,
-    "Kazi Farmas": false,
+  late final Map<String, bool> brands = {
+    for (final item in AppGroceryData.filterBrands) item: item == 'Cocola',
   };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-
       body: SafeArea(
         child: Column(
           children: [
-
-            ///  HEADER
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+              padding: EdgeInsets.symmetric(
+                horizontal: AppSizes.pageHorizontal,
+                vertical: 12.h,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -45,7 +44,7 @@ class _FilterScreenState extends State<FilterScreen> {
                     child: const Icon(Icons.close),
                   ),
                   Text(
-                    "Filters",
+                    AppStrings.filters,
                     style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
@@ -56,11 +55,10 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
             ),
 
-            ///  BODY
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF2F3F2),
+                  color: AppColors.fieldBackground,
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(24.r),
                   ),
@@ -69,17 +67,13 @@ class _FilterScreenState extends State<FilterScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                   child: Column(
                     children: [
-
-                      /// SCROLL
                       Expanded(
                         child: SingleChildScrollView(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
-                              /// CATEGORIES
                               Text(
-                                "Categories",
+                                AppStrings.categories,
                                 style: TextStyle(
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.w600,
@@ -89,12 +83,12 @@ class _FilterScreenState extends State<FilterScreen> {
                               SizedBox(height: 12.h),
 
                               ...categories.keys.map((key) {
-                                return _checkboxItem(
-                                  key,
-                                  categories[key]!,
-                                      (val) {
+                                return FilterCheckboxItem(
+                                  text: key,
+                                  value: categories[key]!,
+                                  onChanged: (value) {
                                     setState(() {
-                                      categories[key] = val!;
+                                      categories[key] = value ?? false;
                                     });
                                   },
                                 );
@@ -102,9 +96,8 @@ class _FilterScreenState extends State<FilterScreen> {
 
                               SizedBox(height: 24.h),
 
-                              /// BRAND
                               Text(
-                                "Brand",
+                                AppStrings.brand,
                                 style: TextStyle(
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.w600,
@@ -114,12 +107,12 @@ class _FilterScreenState extends State<FilterScreen> {
                               SizedBox(height: 12.h),
 
                               ...brands.keys.map((key) {
-                                return _checkboxItem(
-                                  key,
-                                  brands[key]!,
-                                      (val) {
+                                return FilterCheckboxItem(
+                                  text: key,
+                                  value: brands[key]!,
+                                  onChanged: (value) {
                                     setState(() {
-                                      brands[key] = val!;
+                                      brands[key] = value ?? false;
                                     });
                                   },
                                 );
@@ -129,25 +122,39 @@ class _FilterScreenState extends State<FilterScreen> {
                         ),
                       ),
 
-                      ///  BUTTON
                       SizedBox(
                         width: double.infinity,
                         height: 60.h,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(
+                              context,
+                              FilterSelection(
+                                categories: categories.entries
+                                    .where((entry) => entry.value)
+                                    .map((entry) => entry.key)
+                                    .toList(),
+                                brands: brands.entries
+                                    .where((entry) => entry.value)
+                                    .map((entry) => entry.key)
+                                    .toList(),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor:  AppColors.primary,
+                            backgroundColor: AppColors.primary,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.r),
+                              borderRadius:
+                                  BorderRadius.circular(AppSizes.cardRadius),
                             ),
                           ),
                           child: Text(
-                            "Apply Filter",
+                            AppStrings.applyFilter,
                             style: TextStyle(
-                                color: AppColors.background,
-                                fontSize: 16.sp,
+                              color: AppColors.background,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
-                               ),
+                            ),
                           ),
                         ),
                       ),
@@ -159,25 +166,6 @@ class _FilterScreenState extends State<FilterScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _checkboxItem(String text, bool value, Function(bool?) onChanged) {
-    return Row(
-      children: [
-        Checkbox(
-          value: value,
-          onChanged: onChanged,
-          activeColor:  AppColors.primary,
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            color: value ?  AppColors.primary : Colors.black,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
     );
   }
 }

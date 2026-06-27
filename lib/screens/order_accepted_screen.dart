@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../core/constants/app_assets.dart';
+import '../core/constants/app_strings.dart';
 import '../core/theme/app_colors.dart';
 
 class OrderAcceptedScreen extends StatelessWidget {
@@ -21,7 +23,7 @@ class OrderAcceptedScreen extends StatelessWidget {
             right: 0,
             height: 260.h,
             child: Image.asset(
-              'assets/images/gradient.png',
+              AppAssets.gradient,
               fit: BoxFit.cover,
               errorBuilder: (c, e, s) => const SizedBox(),
             ),
@@ -34,7 +36,7 @@ class OrderAcceptedScreen extends StatelessWidget {
             right: 0,
             height: 180.h,
             child: Image.asset(
-              'assets/images/gradient_bottom.png',
+              AppAssets.gradientBottom,
               fit: BoxFit.cover,
               errorBuilder: (c, e, s) => const SizedBox(),
             ),
@@ -52,7 +54,7 @@ class OrderAcceptedScreen extends StatelessWidget {
 
                   /// IMAGE
                   Image.asset(
-                    'assets/images/order_accepted.png',
+                    AppAssets.orderAccepted,
                     width: 250.w,
                     fit: BoxFit.contain,
                     errorBuilder: (c, e, s) => Icon(
@@ -66,7 +68,7 @@ class OrderAcceptedScreen extends StatelessWidget {
 
                   /// TITLE
                   Text(
-                    'Your Order has been\naccepted',
+                    AppStrings.orderAcceptedTitle,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 28.sp,
@@ -80,7 +82,7 @@ class OrderAcceptedScreen extends StatelessWidget {
 
                   /// SUBTITLE
                   Text(
-                    "Your items has been placed and is on\nit's way to being processed",
+                    AppStrings.orderAcceptedSubtitle,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16.sp,
@@ -105,11 +107,11 @@ class OrderAcceptedScreen extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'Track Order',
+                        AppStrings.trackOrder,
                         style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white,
+                          color: AppColors.background,
                         ),
                       ),
                     ),
@@ -122,11 +124,11 @@ class OrderAcceptedScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.popUntil(
                         context,
-                            (route) => route.isFirst,
+                        (route) => route.isFirst,
                       );
                     },
                     child: Text(
-                      'Back to home',
+                      AppStrings.backToHome,
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../core/constants/app_assets.dart';
+import '../core/constants/app_sizes.dart';
+import '../core/constants/app_strings.dart';
 import '../core/theme/app_colors.dart';
 import 'verification_screen.dart';
 
@@ -23,6 +26,12 @@ class _NumberScreenState extends State<NumberScreen> {
   }
 
   @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final keyboard = MediaQuery.of(context).viewInsets.bottom;
 
@@ -38,7 +47,7 @@ class _NumberScreenState extends State<NumberScreen> {
             right: 0,
             height: 300.h,
             child: Image.asset(
-              "assets/images/gradient.png",
+              AppAssets.gradient,
               fit: BoxFit.cover,
             ),
           ),
@@ -50,7 +59,7 @@ class _NumberScreenState extends State<NumberScreen> {
             right: 0,
             height: 300.h,
             child: Image.asset(
-              "assets/images/gradient_bottom.png",
+              AppAssets.gradientBottom,
               fit: BoxFit.cover,
             ),
           ),
@@ -58,7 +67,7 @@ class _NumberScreenState extends State<NumberScreen> {
           /// CONTENT
           SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.authHorizontal),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -70,7 +79,7 @@ class _NumberScreenState extends State<NumberScreen> {
                       child: Icon(
                         Icons.arrow_back_ios_new,
                         size: 22.sp,
-                        color: Colors.black,
+                        color: AppColors.black,
                       ),
                     ),
                   ),
@@ -79,7 +88,7 @@ class _NumberScreenState extends State<NumberScreen> {
 
                   /// TITLE
                   Text(
-                    "Enter your mobile number",
+                    AppStrings.enterMobileNumber,
                     style: TextStyle(
                       fontSize: 26.sp,
                       fontWeight: FontWeight.w600,
@@ -91,11 +100,11 @@ class _NumberScreenState extends State<NumberScreen> {
 
                   /// LABEL
                   Text(
-                    "Mobile Number",
+                    AppStrings.mobileNumber,
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
-                      color: const Color(0xFF828282),
+                      color: AppColors.textSecondary,
                     ),
                   ),
 
@@ -109,12 +118,12 @@ class _NumberScreenState extends State<NumberScreen> {
                         height: 18.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(3.r),
-                          color: const Color(0xFF006A4E),
+                          color: AppColors.bangladeshGreen,
                         ),
                         child: Center(
                           child: CircleAvatar(
                             radius: 5.r,
-                            backgroundColor: const Color(0xFFF42A41),
+                            backgroundColor: AppColors.bangladeshRed,
                           ),
                         ),
                       ),
@@ -126,7 +135,7 @@ class _NumberScreenState extends State<NumberScreen> {
                           focusNode: _focusNode,
                           keyboardType: TextInputType.phone,
                           decoration: const InputDecoration(
-                            hintText: "+880",
+                            hintText: AppStrings.phonePrefix,
                             border: InputBorder.none,
                           ),
                           style: TextStyle(
@@ -148,7 +157,7 @@ class _NumberScreenState extends State<NumberScreen> {
 
           /// FLOAT BUTTON
           Positioned(
-            right: 24.w,
+            right: AppSizes.authHorizontal,
             bottom: keyboard > 0 ? keyboard + 24.h : 32.h,
             child: GestureDetector(
               onTap: () {
@@ -167,7 +176,7 @@ class _NumberScreenState extends State<NumberScreen> {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.15),
+                      color: AppColors.shadow.withValues(alpha: 0.15),
                       blurRadius: 20,
                       offset: const Offset(0, 10),
                     ),

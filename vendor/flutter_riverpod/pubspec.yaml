@@ -1,0 +1,11 @@
+name: flutter_riverpod
+description: Local Riverpod-compatible fallback used when pub.dev is unavailable.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=3.10.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter

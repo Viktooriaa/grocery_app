@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../core/constants/app_assets.dart';
+import '../core/constants/app_sizes.dart';
+import '../core/constants/app_strings.dart';
 import '../core/theme/app_colors.dart';
 import 'main_screen.dart';
 
@@ -23,10 +26,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
     text: '12345678',
   );
 
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   InputDecoration _fieldDecoration({Widget? suffix}) {
     return InputDecoration(
       filled: true,
-      fillColor: Colors.transparent,
+      fillColor: AppColors.transparent,
       isDense: true,
       contentPadding: EdgeInsets.symmetric(vertical: 10.h),
       suffixIcon: suffix,
@@ -47,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Theme(
       data: ThemeData(brightness: Brightness.light),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.transparent,
         resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
@@ -61,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               right: 0,
               height: 320.h,
               child: Image.asset(
-                "assets/images/gradient.png",
+                AppAssets.gradient,
                 fit: BoxFit.cover,
               ),
             ),
@@ -73,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               right: 0,
               height: 220.h,
               child: Image.asset(
-                "assets/images/gradient_bottom.png",
+                AppAssets.gradientBottom,
                 fit: BoxFit.cover,
               ),
             ),
@@ -83,9 +94,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: SingleChildScrollView(
                 physics: const ClampingScrollPhysics(),
                 child: Container(
-                  color: Colors.transparent,
+                  color: AppColors.transparent,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppSizes.authHorizontal,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -94,16 +107,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         // Логотип
                         Center(
                           child: SvgPicture.asset(
-                            "assets/icons/carrot_orange.svg",
+                            AppAssets.carrotOrange,
                             height: 60.h,
                           ),
                         ),
 
                         SizedBox(height: 48.h),
 
-                        // Заголовок
                         Text(
-                          "Sign Up",
+                          AppStrings.signUpTitle,
                           style: TextStyle(
                             fontSize: 26.sp,
                             fontWeight: FontWeight.w600,
@@ -113,9 +125,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                         SizedBox(height: 6.h),
 
-                        // Підзаголовок
                         Text(
-                          "Enter your credentials to continue",
+                          AppStrings.signUpSubtitle,
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: AppColors.textSecondary,
@@ -126,7 +137,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                         // Username
                         Text(
-                          "Username",
+                          AppStrings.username,
                           style: TextStyle(
                             fontSize: 13.sp,
                             color: AppColors.textSecondary,
@@ -146,7 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                         // Email
                         Text(
-                          "Email",
+                          AppStrings.email,
                           style: TextStyle(
                             fontSize: 13.sp,
                             color: AppColors.textSecondary,
@@ -173,7 +184,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                         // Password
                         Text(
-                          "Password",
+                          AppStrings.password,
                           style: TextStyle(
                             fontSize: 13.sp,
                             color: AppColors.textSecondary,
@@ -216,17 +227,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               height: 1.5,
                             ),
                             children: const [
-                              TextSpan(text: "By continuing you agree to our "),
                               TextSpan(
-                                text: "Terms of Service",
+                                text: AppStrings.termsOfServicePrefix,
+                              ),
+                              TextSpan(
+                                text: AppStrings.termsOfService,
                                 style: TextStyle(color: AppColors.primary),
                               ),
-                              TextSpan(text: "\nand "),
+                              TextSpan(text: AppStrings.privacyMiddle),
                               TextSpan(
-                                text: "Privacy Policy",
+                                text: AppStrings.privacyPolicy,
                                 style: TextStyle(color: AppColors.primary),
                               ),
-                              TextSpan(text: "."),
+                              TextSpan(text: '.'),
                             ],
                           ),
                         ),
@@ -255,7 +268,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                             ),
                             child: Text(
-                              "Sing Up",
+                              AppStrings.signUpButton,
                               style: TextStyle(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
@@ -274,7 +287,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Already have an account? ",
+                                AppStrings.alreadyHaveAccount,
                                 style: TextStyle(
                                   fontSize: 14.sp,
                                   color: AppColors.textPrimary,
@@ -283,7 +296,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               GestureDetector(
                                 onTap: () => Navigator.pop(context),
                                 child: Text(
-                                  "Log in",
+                                  AppStrings.logIn,
                                   style: TextStyle(
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w600,
